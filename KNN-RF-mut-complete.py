@@ -21,7 +21,7 @@ df = df.drop("Unnamed: 0", axis=1)
 
 # exit()
 
-df = df.loc[:, ~df.columns.isin(['AccessionNumber', '1stpfs event', 'dpfs'])]
+df = df.loc[:, ~df.columns.isin(['AccessionNumber', '1stpfs event', 'dpfs', 'dos'])]
 # df = df[df["safety"]==1] #select safety analysis
 # df = df.drop('PatientCode',axis=1) #drop one row with Nan value
 # df = df[~df.isin([-99]).any(axis=1)] #drop any rows with -99 value
