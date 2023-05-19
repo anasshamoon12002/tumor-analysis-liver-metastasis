@@ -8,7 +8,7 @@ from sklearn.model_selection import StratifiedKFold, GridSearchCV
 from sklearn.feature_selection import RFECV
 from sklearn.feature_selection import RFE
 import matplotlib.pyplot as plt
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import accuracy_score, classification_report, f1_score, auc, roc_curve
 from sklearn.linear_model import SGDClassifier
 import numpy as np
 
@@ -89,6 +89,11 @@ y_pred = rfecv.predict(x_test)
 # compute accuracy
 print(accuracy_score(y_test, y_pred))
 
+fpr, tpr, threshold = roc_curve(y_test, y_pred)
+
+print("AUC: ", auc(fpr, tpr))
+
+print("F1: ", f1_score(y_test, y_pred, zero_division=1))
 
 # Selected Data with Relevant Features
 
@@ -126,3 +131,9 @@ grid_predictions = knn_cv.predict(selected_x_test)
 print(accuracy_score(y_test, grid_predictions))
 # print classification report 
 print(classification_report(y_test, grid_predictions)) 
+
+fpr, tpr, threshold = roc_curve(y_test, grid_predictions)
+
+print("AUC: ", auc(fpr, tpr))
+
+print("F1: ", f1_score(y_test, grid_predictions, zero_division=1))

@@ -5,7 +5,7 @@ from sklearn.feature_selection import SelectKBest, chi2, f_classif
 from sklearn.model_selection import GridSearchCV, RandomizedSearchCV, cross_val_score, StratifiedShuffleSplit
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, auc, roc_curve, f1_score
 import pandas as pd
 import pickle
 from sklearn.model_selection import train_test_split
@@ -96,3 +96,9 @@ y_pred = clf.predict(x_test_selected)
 # Calculate the accuracy of the final model
 accuracy = accuracy_score(y_test, y_pred)
 print('Accuracy on test:', accuracy)
+
+fpr, tpr, threshold = roc_curve(y_test, y_pred)
+
+print("AUC: ", auc(fpr, tpr))
+
+print("F1: ", f1_score(y_test, y_pred, zero_division=1))
