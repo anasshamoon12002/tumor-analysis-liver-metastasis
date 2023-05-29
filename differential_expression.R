@@ -1,8 +1,8 @@
-data=read.csv("C:\\Users\\botru\\Desktop\\mutationsComplete.csv")
+data=read.csv("mutationsComplete.csv")
 library("readxl")
 library(caret)
 library(glmnet)
-data2=read_excel("C:\\Users\\botru\\Desktop\\d1.xlsx")
+data2=read_excel("d1.xlsx")
 data2<-data2[7:69]
 data2
 print(colnames(data2))
